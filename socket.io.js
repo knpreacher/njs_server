@@ -23,6 +23,9 @@ socket.on('connection', function (client){
   client.on('disconnect', function () {
     console.log(ID+' is disconnected');
   });
+  client.on('iwj',function (data) {
+    console.log((new Date())+' : from: '+ID+' data: '+data);
+  })
 });
 /*
 socket.on('cmid',function(socket , data){

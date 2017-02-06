@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS!</title>
+    <meta name="language" content="en">
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+  </head>
+  <body>
+    <div class="divheader">
+      <h1>
+
+      </h1>
+      <form class="mform" action="index.html" method="post">
+        <input type="text" name="" value="" id="imp1">
+        <button type="button" name="button" id="btn" onclick="bcl()">Send</button>
+        <button type="button" name="button" onclick="joinroom()">Join room</button>
+      </form>
+    </div>
+    <div class="divcont">
+      <p id="mp">
+
+      </p>
+    </div>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript">
+      var mlogs = document.getElementById('mp');
+      var imp1 = document.getElementById('imp1');
+
+      var socket = io('http://192.168.0.107:8080');
+
+      socket.on('connect', function (client) {
+        console.log('connected');
+      });
+      socket.on('message',function(data){
+          console.log(data);
+          mlogs.innerText += '\r\n'+data;
+      });
+      socket
+      function bcl() {
+        console.log('clicked');
+        mlogs.innerText += '\r\n'+'i click button';
+        socket.emit('message',imp1.value);
+      };
+      function joinroom(){
+        socket.emit('iwj',imp1.value);
+      };
+    </script>
+  </body>
+</html>

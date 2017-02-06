@@ -1,0 +1,15 @@
+.divheader{
+  position: absolute;;
+  width: 100%;
+  background-color: rgba(154, 154, 154, 0.68);
+  margin: : 20px;
+  padding-bottom: 20px;
+  float: left;
+}
+.divcont{
+  position: absolute;
+  top: 60px;
+}
+.mform{
+  margin-left: 20px;
+}
