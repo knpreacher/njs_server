@@ -25,6 +25,8 @@ socket.on('connection', function (client){
   });
   client.on('iwj',function (data) {
     console.log((new Date())+' : from: '+ID+' data: '+data);
+    client.join(data);
+    client.broadcast.to(data).send(ID + ' is connected to room')
   })
 });
 /*
