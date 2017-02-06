@@ -24,10 +24,12 @@ socket.on('connection', function (client){
     console.log(ID+' is disconnected');
   });
 });
+/*
 socket.on('cmid',function(socket , data){
   console.log('catched cmid data:'+ data + ' from '+socket);
 });
 socket.on('image',function(image) {
   console.log('image...');
   gclient.broadcast.emit('image',image);
-})
+});
+*/
