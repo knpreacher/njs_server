@@ -23,11 +23,16 @@ socket.on('connection', function (client){
   client.on('disconnect', function () {
     console.log(ID+' is disconnected');
   });
+  var room = null;
   client.on('iwj',function (data) {
     console.log((new Date())+' : from: '+ID+' data: '+data);
+    room = data;
     client.join(data);
     client.broadcast.to(data).send(ID + ' is connected to room')
-  })
+  });
+  client.on('rm',function(data){
+    client.broadcast.to(room).emit('rm',data);
+  });
 });
 /*
 socket.on('cmid',function(socket , data){
