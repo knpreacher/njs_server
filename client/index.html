@@ -11,7 +11,8 @@
 
       </h1>
       <form class="mform" action="index.html" method="post">
-        <input type="text" name="" value="" id="imp1">
+        <input type="text" name="" value="" id="imp1" onkeypress="sendToRoom(event)">
+        <button type="button" name="button" onclick="sTR()">str</button>
         <button type="button" name="button" id="btn" onclick="bcl()">Send</button>
         <button type="button" name="button" onclick="joinroom()">Join room</button>
       </form>
@@ -27,7 +28,7 @@
       var mlogs = document.getElementById('mp');
       var imp1 = document.getElementById('imp1');
 
-      var socket = io('http://192.168.0.107:8080');
+      var socket = io('http://192.168.0.222:8080');
 
       socket.on('connect', function (client) {
         console.log('connected');
@@ -36,7 +37,9 @@
           console.log(data);
           mlogs.innerText += '\r\n'+data;
       });
-      socket
+      socket.on('rm',function (data) {
+        mlogs.innerText += '\r\n'+data;
+      });
       function bcl() {
         console.log('clicked');
         mlogs.innerText += '\r\n'+'i click button';
@@ -44,6 +47,14 @@
       };
       function joinroom(){
         socket.emit('iwj',imp1.value);
+      };
+      function sendToRoom(e) {
+        if(e.keyCode == 13){
+          console.log('13');
+        }
+      };
+      function sTR() {
+        socket.emit('rm',imp1.value);
       };
     </script>
   </body>
