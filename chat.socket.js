@@ -1,11 +1,12 @@
 var express = require('express'),
     io  = require('socket.io');
-    mysql = require('mysql');
-var _ = require('underscore');
+    //mysql = require('mysql');
+//var _ = require('underscore');
 var usersCount = {};
 console.log('started');
 //app.listen(8080);
 var socket = io.listen(8080);
+/*
 var mysql_client = mysql.createConnection({
   host : 'localhost',
   user : 'knp',
